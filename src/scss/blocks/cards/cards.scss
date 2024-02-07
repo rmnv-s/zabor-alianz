@@ -42,6 +42,11 @@
     line-height: 2.4rem;
     color: $main-grey;
     flex: 1 1 auto;
+
+    @media (max-width: 1260px) {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
   }
 
   &__btn {

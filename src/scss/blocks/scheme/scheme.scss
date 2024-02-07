@@ -4,7 +4,6 @@
   margin-bottom: 20rem;
 
   &__inner {
-    // outline: 1px solid green;
     display: grid;
     grid-template-columns: 50% 50%;
     margin-top: 5rem;
@@ -15,11 +14,14 @@
   }
 
   &__inner-img {
-    // width: 100%;
     margin-left: 5rem;
 
     @media (max-width: 1625px) {
       width: 60%;
+    }
+
+    @media (max-width: 1260px) {
+      margin-top: 5rem;
     }
   }
 
@@ -48,6 +50,11 @@
       margin-bottom: 0.2rem;
     }
 
+    @media (max-width: 1260px) {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -63,9 +70,15 @@
     font-size: 1.8rem;
     line-height: 2.5rem;
     color: $main-grey;
+
     @media (max-width: 1625px) {
       font-size: 1.6rem;
       line-height: 2.4rem;
+    }
+
+    @media (max-width: 1260px) {
+      font-size: 1.4rem;
+      line-height: 2rem;
     }
   }
 }

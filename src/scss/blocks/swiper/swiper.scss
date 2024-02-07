@@ -1,21 +1,12 @@
 @use "helpers/color" as *;
 
 .swiper {
-  // width: 100%;
   max-width: 189rem;
   margin-top: 8.6rem;
   margin-bottom: 12rem;
-  // padding: 0 1.5rem;
-  // margin: 8.6rem 0 12rem 0;
-  // min-height: 45rem;
-}
-
-.swiper-wrapper {
-  // overflow-x: hidden;
 }
 
 .swiper-slide {
-  // margin-right: 1.5rem;
   img {
     width: 100%;
   }
@@ -27,46 +18,4 @@
 
 .swiper-pagination-bullet-active {
   background-color: $main-orange;
-}
-
-.swiper-comment .swiper-slide {
-  // & p {
-  // }
-}
-
-.swiper-comment {
-  margin-top: 0;
-}
-
-.comment__swiper-slide {
-  border-top: 1px solid $subline-color-grey;
-  border-bottom: 1px solid $subline-color-grey;
-  padding: 2rem 0 1.5rem 0;
-  min-height: 20rem;
-}
-
-.comment__swiper-slide-name {
-  position: relative;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  font-weight: 700;
-  padding-left: 6rem;
-  color: $main-black;
-
-  &::before {
-    content: url("../../../img/icons/comment-quote-icon.svg");
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3.2rem;
-    height: 2.2rem;
-  }
-}
-
-.comment__swiper-slide-text {
-  font-size: 1.4rem;
-  line-height: 2.1rem;
-  font-weight: 400;
-  padding: 1.7rem 5rem 0 6rem;
-  color: $main-grey;
 }

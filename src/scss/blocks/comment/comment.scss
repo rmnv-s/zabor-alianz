@@ -1,0 +1,47 @@
+@use "helpers/color" as *;
+.comment {
+  margin-bottom: 20rem;
+  &__inner {
+    // outline: 1px solid green;
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 3rem;
+  }
+
+  &__slide {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-right: 20px;
+
+    @media (max-width: 1260px) {
+      min-width: 480px;
+    }
+    // margin-right: 2rem;
+  }
+
+  &__slide-name {
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 700;
+    padding-left: 6rem;
+    color: $main-black;
+
+    &::before {
+      content: url("../../../img/icons/comment-quote-icon.svg");
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3.2rem;
+      height: 2.2rem;
+    }
+  }
+
+  &__slide-text {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    font-weight: 400;
+    padding: 1.7rem 0 0 6rem;
+    color: $main-grey;
+  }
+}
