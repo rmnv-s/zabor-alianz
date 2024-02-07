@@ -1,0 +1,111 @@
+@use "helpers/color" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(50px);
+  border-bottom: 0.1rem solid $subline-color-grey;
+  // padding: 0 1.5rem;
+
+  @media (max-width: 1260px) {
+    margin-bottom: 3rem;
+  }
+
+  &__nav {
+    height: 5.6rem;
+    padding-top: 1.6rem;
+
+    @media (max-width: 1260px) {
+      padding-top: 10px;
+      height: 6.5rem;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $main-black;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $main-orange;
+    }
+  }
+
+  &__logo {
+    margin-right: 3rem;
+  }
+
+  &__phone {
+    position: absolute;
+    top: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    @media (max-width: 1260px) {
+      left: 0;
+      top: 2.9rem;
+      font-size: 1.9rem;
+    }
+  }
+}
+
+// MAIN: NAV;
+
+.main-nav {
+  ul {
+    display: flex;
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    & :not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    @media (max-width: 1260px) {
+      position: relative;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  @media (max-width: 1260px) {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    justify-content: space-between;
+  }
+}
+
+// BTN CALLING: ;
+
+.calling {
+  justify-self: end;
+  // outline: 1px solid tomato;
+
+  &__btn {
+    font-size: 1.4rem;
+    color: $main-black;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+
+    &-online {
+      margin-right: 3rem;
+    }
+  }
+
+  @media (max-width: 1260px) {
+    grid-column: 2/4;
+    grid-row: 1/2;
+  }
+}
+
+.logo-phone {
+  position: relative;
+}

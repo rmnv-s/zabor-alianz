@@ -1,0 +1,96 @@
+@use "helpers/color" as *;
+
+.calculate {
+  background-color: #f6f6f6;
+  padding: 8rem 0 10rem 0;
+  margin-bottom: 20rem;
+
+  &__heading {
+    @media (max-width: 1625px) {
+      max-width: 37rem;
+    }
+  }
+
+  &__form {
+    // outline: 1px solid green;
+    grid-column: 2/4;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10rem 1fr;
+    // column-gap: 4rem;
+
+    @media (max-width: 1625px) {
+      grid-template-columns: 58% 42%;
+    }
+
+    &-col-1 {
+      margin-right: 4rem;
+    }
+
+    &-col-2 {
+      margin-bottom: 5rem;
+    }
+
+    &-button {
+      margin-right: 4rem;
+      font-size: 1.6rem;
+      line-height: 2.4;
+      letter-spacing: 3%;
+      // text-transform: uppercase;
+      color: $main-orange;
+
+      border: 0.15rem solid $main-orange;
+      border-radius: 0.6rem;
+      background-color: #fff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $main-orange;
+        color: #fff;
+      }
+    }
+  }
+
+  &__form-heading {
+    grid-column: 1/3;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    font-weight: 400;
+    color: $main-grey;
+    max-width: 30.5rem;
+    // margin-bottom: 15rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  input,
+  select {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(72, 72, 72, 0.5);
+    min-width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    outline: none;
+  }
+  select {
+    color: $main-orange;
+  }
+}
+
+// Ошибка, нужно смотреть делать или нет!!
+.form-input__error {
+  display: none;
+  font-size: 1.6rem;
+  color: red;
+  text-transform: uppercase;
+  position: relative;
+  top: -1.5rem;
+}

@@ -1,0 +1,45 @@
+@use "helpers/color" as *;
+
+.footer {
+  // position: relative;
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+
+  font-size: 12px;
+
+  a {
+    opacity: 0.5;
+    color: $main-black;
+    text-decoration: none;
+    transition: all ease-in 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  a:last-of-type {
+    text-decoration: underline;
+    // color: $main-orange;
+  }
+
+  p {
+    opacity: 0.5;
+  }
+
+  &__policy {
+    justify-self: center;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+  }
+
+  &__web {
+    justify-self: end;
+  }
+}

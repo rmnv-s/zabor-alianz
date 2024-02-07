@@ -1,0 +1,24 @@
+@use "helpers/color" as *;
+
+.about {
+  margin-bottom: 15rem;
+
+  &__heading {
+    margin: 0;
+    grid-column: 2/4;
+    font-size: 4.2rem;
+    line-height: 6rem;
+    font-weight: 500;
+    color: $main-black;
+
+    text-indent: 13.8rem;
+  }
+
+  &__paragraph {
+    font-size: 2rem;
+    line-height: 2.7rem;
+    color: $main-orange;
+    max-width: 35.5rem;
+    font-weight: 500;
+  }
+}

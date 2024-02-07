@@ -1,0 +1,44 @@
+@use "helpers/color" as *;
+
+.page {
+  &__grid {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+
+    // outline: 1px solid tomato;
+    // grid-template-columns: 38% 26% 26%;
+    // column-gap: 25px;
+    // column-gap: 5%;
+    // grid-template-columns: 38% 1fr 1fr;
+    // outline: 1px solid green;
+
+    @media (max-width: 1625px) {
+      grid-template-columns: 40% 35% 25%;
+    }
+  }
+
+  &__wrapper {
+    max-width: 192rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  &__block-heading {
+    position: relative;
+    color: $main-black;
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin: 0 0 5rem 3.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1.4rem;
+      left: -3.3rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: $main-green;
+      transform: rotate(-45deg);
+    }
+  }
+}

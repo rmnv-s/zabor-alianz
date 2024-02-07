@@ -1,0 +1,23 @@
+@forward "helpers/normalize";
+@forward "helpers/fonts";
+@forward "helpers/color";
+@forward "helpers/text";
+@forward "helpers/global";
+@forward "helpers/mixin";
+@forward "helpers/variebles.scss";
+
+@forward "blocks/root/root.scss";
+@forward "blocks/page/page.scss";
+
+@forward "blocks/header/header.scss";
+@forward "blocks/swiper/swiper.scss";
+
+@forward "blocks/about/about.scss";
+@forward "blocks/service/service.scss";
+@forward "blocks/cards/cards.scss";
+@forward "blocks/calculate/calculate.scss";
+@forward "blocks/individual/individual.scss";
+@forward "blocks/scheme/scheme.scss";
+@forward "blocks/works/works.scss";
+@forward "blocks/contacts/contacts.scss";
+@forward "blocks/footer/footer.scss";

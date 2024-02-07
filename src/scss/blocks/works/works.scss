@@ -1,0 +1,14 @@
+.works {
+  margin-bottom: 15rem;
+}
+
+.works-grid {
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(5, 19%);
+  column-gap: 1%;
+  row-gap: 2rem;
+  &__img {
+    width: 100%;
+  }
+}
