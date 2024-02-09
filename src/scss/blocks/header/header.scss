@@ -28,7 +28,7 @@
   a {
     text-decoration: none;
     color: $main-black;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in;
     &:hover {
       color: $main-orange;
     }
@@ -89,14 +89,40 @@
   // outline: 1px solid tomato;
 
   &__btn {
+    position: relative;
     font-size: 1.4rem;
     color: $main-black;
     font-weight: 500;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      color: $main-orange;
+    }
 
     &-online {
-      margin-right: 3rem;
+      margin-right: 3.5rem;
+
+      &::before {
+        position: absolute;
+        content: url("../../../img/icons/online-icon-btn.svg");
+        width: 1.1rem;
+        height: 1.4rem;
+        left: -2rem;
+        top: 0;
+      }
+    }
+    &-gager {
+      &::before {
+        position: absolute;
+        content: url("../../../img/icons/call-icon-btn.svg");
+        width: 1.1rem;
+        height: 1.4rem;
+        left: -2rem;
+        top: 0;
+      }
     }
   }
 
