@@ -11,6 +11,17 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+window.addEventListener("scroll", function () {
+  const header = document.querySelector(".header");
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition > 100) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
 // const swiperComment = new Swiper(".swiper-comment", {
 //   slidesPerView: 3,
 //   spaceBetween: 30,

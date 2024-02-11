@@ -6,6 +6,12 @@
   margin-bottom: 20rem;
 
   &__heading {
+    padding-top: 0;
+
+    &::before {
+      top: 1.4rem;
+    }
+
     @media (max-width: 1625px) {
       max-width: 37rem;
     }
@@ -18,7 +24,6 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 10rem 1fr;
-    // column-gap: 4rem;
 
     @media (max-width: 1625px) {
       grid-template-columns: 58% 42%;

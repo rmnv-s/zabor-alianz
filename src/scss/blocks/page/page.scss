@@ -29,16 +29,42 @@
     font-size: 3.6rem;
     font-weight: 700;
     margin: 0 0 5rem 3.5rem;
+    padding-top: 6rem;
 
     &::before {
       content: "";
       position: absolute;
-      top: 1.4rem;
+      top: 7.4rem;
       left: -3.3rem;
       width: 1.5rem;
       height: 1.5rem;
       background-color: $main-green;
       transform: rotate(-45deg);
+
+      animation: spin-and-morph 12s linear infinite;
+    }
+  }
+
+  @keyframes spin-and-morph {
+    0% {
+      transform: rotate(0deg);
+      border-radius: 0%;
+    }
+    25% {
+      transform: rotate(90deg);
+      border-radius: 25%;
+    }
+    50% {
+      transform: rotate(180deg);
+      border-radius: 45%;
+    }
+    75% {
+      transform: rotate(270deg);
+      border-radius: 25%;
+    }
+    100% {
+      transform: rotate(360deg);
+      border-radius: 0%;
     }
   }
 }
