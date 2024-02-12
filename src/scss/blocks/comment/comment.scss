@@ -37,11 +37,17 @@
   &__slide {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    margin-right: 3rem;
     padding: 1.5rem 0;
 
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+
     @media (max-width: 1260px) {
-      min-width: 480px;
+      min-width: 48rem;
+    }
+    @media (max-width: 673px) {
+      min-width: 38.8rem;
     }
   }
 
@@ -69,5 +75,9 @@
     font-weight: 400;
     padding: 1.7rem 0 0 6rem;
     color: $main-grey;
+
+    @media (max-width: 673px) {
+      padding: 1.7rem 0 0 0rem;
+    }
   }
 }

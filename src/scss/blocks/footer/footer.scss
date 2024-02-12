@@ -1,16 +1,15 @@
 @use "helpers/color" as *;
 
 .footer {
-  // position: relative;
-  // display: flex;
-  // justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-top: 1rem;
   padding-bottom: 1.5rem;
-
   font-size: 12px;
 
+  @media (max-width: 673px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   a {
     opacity: 0.5;
     color: $main-black;
@@ -24,7 +23,6 @@
 
   a:last-of-type {
     text-decoration: underline;
-    // color: $main-orange;
   }
 
   p {
@@ -33,13 +31,20 @@
 
   &__policy {
     justify-self: center;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+    @media (max-width: 673px) {
+      margin-top: 1rem;
+      grid-row: 2/3;
+      justify-self: start;
+    }
   }
 
   &__web {
     justify-self: end;
+
+    @media (max-width: 673px) {
+      // grid-columns: 1/4;
+      margin-top: 1rem;
+      grid-row: 2/3;
+    }
   }
 }

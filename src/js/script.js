@@ -59,3 +59,34 @@ window.addEventListener("scroll", function () {
 //     console.log("притормози");
 //   }
 // });
+
+// БУРГЕР МЕНЮ
+let menuBtn = document.querySelector(".burger-menu");
+const body = document.querySelector("body");
+const header = document.querySelector(".header__nav");
+
+const mainNav = document.querySelector(".main-nav");
+const calling = document.querySelector(".calling");
+
+const headerPhone = document.querySelector(".header__phone");
+
+menuBtn.addEventListener("click", () => {
+  menuBtn.classList.toggle("active");
+
+  if (menuBtn.classList.contains("active")) {
+    body.classList.add("no-scroll");
+    header.classList.add("menu-open");
+
+    mainNav.classList.add("open");
+    calling.classList.add("open");
+
+    headerPhone.classList.add("header__phone-open-burger");
+  } else {
+    header.classList.remove("menu-open");
+    body.classList.remove("no-scroll");
+
+    mainNav.classList.remove("open");
+    calling.classList.remove("open");
+    headerPhone.classList.remove("header__phone-open-burger");
+  }
+});

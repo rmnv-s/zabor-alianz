@@ -1,0 +1,55 @@
+@use "helpers/color" as *;
+.burger-menu {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-self: end;
+  margin: 0.7rem 0;
+  width: 3rem;
+  height: 2rem;
+  cursor: pointer;
+
+  & span {
+    width: 100%;
+    height: 0.3rem;
+    background-color: $main-orange;
+  }
+  //  палки
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0.3rem;
+    background-color: $main-orange;
+    left: 0;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  //   переворот палок
+  &.active span {
+    background-color: $main-green;
+    transform: rotate(-45deg);
+  }
+
+  &.active::before {
+    display: none;
+  }
+
+  &.active::after {
+    background-color: $main-green;
+    transform: rotate(45deg);
+    bottom: 40%;
+  }
+
+  @media (max-width: 673px) {
+    display: flex;
+  }
+}
