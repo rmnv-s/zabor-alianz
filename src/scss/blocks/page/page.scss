@@ -43,6 +43,10 @@
 
       animation: spin-and-morph 12s linear infinite;
     }
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      padding-top: 6.4rem;
+    }
   }
 
   @keyframes spin-and-morph {

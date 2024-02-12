@@ -1,5 +1,9 @@
 .works {
   margin-bottom: 20rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 6rem;
+  }
 }
 
 .works-grid {
@@ -8,6 +12,11 @@
   grid-template-columns: repeat(5, 19%);
   column-gap: 1%;
   row-gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
   &__img {
     width: 100%;
   }

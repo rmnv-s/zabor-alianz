@@ -2,6 +2,10 @@
 .comment {
   margin-bottom: 20rem;
 
+  @media (max-width: 768px) {
+    margin-bottom: 6rem;
+  }
+
   &__inner {
     display: flex;
     overflow-x: auto;

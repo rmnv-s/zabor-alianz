@@ -9,9 +9,6 @@
 }
 
 .contact {
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: end;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
@@ -19,7 +16,6 @@
   border-bottom: 1px solid $subline-color-grey;
 
   &__phone-link {
-    // display: block;
     justify-self: center;
     align-self: end;
   }
@@ -62,6 +58,11 @@
       width: 27rem;
       padding: 1rem 0;
       cursor: pointer;
+
+      @media (max-width: 768px) {
+        width: 17rem;
+        font-size: 1.2rem;
+      }
     }
 
     &-btn-online {

@@ -2,6 +2,10 @@
 
 .cards {
   margin-bottom: 20rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10rem;
+  }
 }
 
 .card {
@@ -19,8 +23,12 @@
     font-size: 2.4rem;
     line-height: 2.8rem;
     font-weight: 700;
-
     color: $main-black;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      line-height: 2.44rem;
+    }
   }
 
   &__list-heading-price {

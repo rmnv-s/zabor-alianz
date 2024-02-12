@@ -4,6 +4,9 @@
   max-width: 189rem;
   margin-top: 8.6rem;
   margin-bottom: 12rem;
+  @media (max-width: 768px) {
+    margin-bottom: 6rem;
+  }
 }
 
 .swiper-slide {
