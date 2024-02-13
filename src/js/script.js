@@ -9,6 +9,11 @@ const swiper = new Swiper(".swiper", {
   scrollbar: {
     el: ".swiper-scrollbar",
   },
+
+  autoplay: {
+    delay: 5000, // Задержка между прокруткой каждого слайда в миллисекундах
+    disableOnInteraction: false, // При значении true автопрокрутка отключится после взаимодействия пользователя (например, касания слайдера)
+  },
 });
 
 window.addEventListener("scroll", function () {
