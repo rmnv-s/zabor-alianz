@@ -40,6 +40,10 @@
     @media (max-width: 673px) {
       grid-row: 2/3;
     }
+
+    @media (max-width: 450px) {
+      padding: 1.5rem 1.5rem 2rem 1.5rem;
+    }
   }
 
   &__offer-tag {
@@ -88,6 +92,11 @@
     @media (max-width: 673px) {
       font-size: 2.8rem;
       line-height: 3.5rem;
+    }
+
+    @media (max-width: 374px) {
+      font-size: 2.4rem;
+      line-height: 3rem;
     }
   }
 
