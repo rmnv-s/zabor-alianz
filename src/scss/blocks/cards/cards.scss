@@ -123,9 +123,8 @@
     }
   }
 
-  &__img {
-    width: 100%;
-
+  &__img-block {
+    position: relative;
     @media (max-width: 673px) {
       grid-column: 3/4;
       grid-row: 1/2;
@@ -138,6 +137,31 @@
       grid-row: 2/3;
       min-height: 80px;
       object-fit: cover;
+    }
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__img-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #fff;
+    padding: 0.8rem 2.5rem;
+    background-color: $main-green;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.45);
+
+    @media (max-width: 1024px) {
+      font-size: 1rem;
+      padding: 0.4rem 1.5rem;
+    }
+    @media (max-width: 673px) {
+      font-size: 1.2rem;
+      padding: 0.5rem 1.8rem;
     }
   }
 }
