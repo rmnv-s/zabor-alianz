@@ -646,20 +646,21 @@
       </footer>
     </div>
 
-    <!-- <section class="popup profile-popup">
+    <section class="popup gager-popup">
       <div class="popup__container">
-        <form
-          class="popup__form popup__form-profile"
-          name="popup__form-profile"
-        >
-          <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form popup__form-gager" name="popup__form-gager">
+          <h2 class="popup__title">Заявка на бесплатный замер</h2>
+          <p class="popup__subtitle">
+            Пожалуйста, заполните данные, и мы свяжемся с вами для согласования
+            деталий
+          </p>
           <fieldset class="popup__form-set">
             <label class="popup__form-field">
               <input
                 class="popup__input popup__input-name"
                 type="text"
                 id="name-input"
-                placeholder="Имя"
+                placeholder="Ваше имя"
                 value=""
                 minlength="2"
                 maxlength="40"
@@ -673,27 +674,38 @@
                 class="popup__input popup__input-about"
                 type="text"
                 id="about-input"
-                placeholder="Профессиональная деятельность"
+                placeholder="Ваш номер телефона"
                 value=""
                 minlength="2"
                 maxlength="200"
                 required
               />
-              <span class="popup__input-error about-input-error"></span>
+              <!-- <span class="popup__input-error about-input-error"></span> -->
             </label>
-            <button
-              class="popup__save-btn popup__submit popup__submit-profile"
-              type="submit"
-            >
-              Сохранить
+
+            <fieldset class="popup__form-set">
+              <label class="popup__form-field">
+                <textarea class="textarea-message" name="textarea-message">
+Напишите удобное время звонка, удалённость участка от МКАД, удобный день для приезда, итд.
+                </textarea>
+
+                <input class="popup__checkbox" type="checkbox" checked />
+                <span class="popup__checkbox-text"
+                  >Согласен на обработку данных</span
+                >
+              </label>
+            </fieldset>
+
+            <button class="popup__submit popup__submit-gager" type="submit">
+              Вызвать замерщика
             </button>
           </fieldset>
         </form>
-        <button class="popup__close-btn" type="submit" title="Закрыть">
-          Закрыть
-        </button>
       </div>
-    </section> -->
+      <button class="popup__close-btn" type="submit" title="Закрыть">
+        Закрыть
+      </button>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/script.min.js"></script>

@@ -82,3 +82,50 @@ callBtn.addEventListener("click", () => {
   calling.classList.remove("open");
   headerPhone.classList.remove("header__phone-open-burger");
 });
+
+// POPUPs
+const popup = document.querySelector(".popup");
+const btnGager = document.querySelector(".calling__btn-gager");
+const popupGager = document.querySelector(".gager-popup");
+const popupCloseBtn = document.querySelector(".popup__close-btn");
+
+const openPopup = (popups) => {
+  popups.classList.add("popup_opened");
+  window.addEventListener("keydown", closeByEscape);
+};
+// ФУНКЦИЯ ЗАРЫТИЯ ПОПАПА
+const closePopup = (popups) => {
+  popups.classList.remove("popup_opened");
+  window.removeEventListener("keydown", closeByEscape);
+};
+
+btnGager.addEventListener("click", () => {
+  openPopup(popupGager);
+});
+
+popupCloseBtn.addEventListener("click", () => {
+  closePopup(popupGager);
+});
+
+const closeByEscape = (evt) => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened"); //нашли открытый попап
+    closePopup(openedPopup); //закрыли попап
+  }
+};
+
+// TEXTAREA
+const textarea = popup.querySelector(".textarea-message");
+console.log(textarea);
+
+textarea.addEventListener("click", function () {
+  if (this.value === this.defaultValue) {
+    this.value = "";
+  }
+});
+
+textarea.addEventListener("blur", function () {
+  if (this.value === "") {
+    this.value = this.defaultValue;
+  }
+});
