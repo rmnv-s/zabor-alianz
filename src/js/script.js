@@ -87,7 +87,17 @@ callBtn.addEventListener("click", () => {
 const popup = document.querySelector(".popup");
 const btnGager = document.querySelector(".calling__btn-gager");
 const popupGager = document.querySelector(".gager-popup");
+
+const btnСonsultation = document.querySelector(".individual__offer-btn");
+const popupConsultation = document.querySelector(".consultation-popup");
 const popupCloseBtn = document.querySelector(".popup__close-btn");
+
+const popups = document.querySelectorAll(".popup");
+
+// const consultationSubmit = document.querySelector(".popup__submit");
+// consultationSubmit.addEventListener("click", (evt) => {
+//   evt.preventDefault();
+// });
 
 const openPopup = (popups) => {
   popups.classList.add("popup_opened");
@@ -99,12 +109,16 @@ const closePopup = (popups) => {
   window.removeEventListener("keydown", closeByEscape);
 };
 
+popupCloseBtn.addEventListener("click", () => {
+  closePopup(popupGager);
+});
+
 btnGager.addEventListener("click", () => {
   openPopup(popupGager);
 });
 
-popupCloseBtn.addEventListener("click", () => {
-  closePopup(popupGager);
+btnСonsultation.addEventListener("click", () => {
+  openPopup(popupConsultation);
 });
 
 const closeByEscape = (evt) => {
@@ -114,18 +128,34 @@ const closeByEscape = (evt) => {
   }
 };
 
-// TEXTAREA
-const textarea = popup.querySelector(".textarea-message");
-console.log(textarea);
+popups.forEach((popup) => {
+  const textareas = popup.querySelectorAll(".textarea-message");
 
-textarea.addEventListener("click", function () {
-  if (this.value === this.defaultValue) {
-    this.value = "";
-  }
+  textareas.forEach((textarea) => {
+    textarea.dataset.defaultValue = textarea.value;
+
+    textarea.addEventListener("click", function () {
+      if (this.value === this.dataset.defaultValue) {
+        this.value = "";
+      }
+    });
+
+    textarea.addEventListener("blur", function () {
+      if (this.value === "") {
+        this.value = this.dataset.defaultValue;
+      }
+    });
+  });
+
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close-btn")) {
+      closePopup(popup);
+    }
+  });
 });
 
-textarea.addEventListener("blur", function () {
-  if (this.value === "") {
-    this.value = this.defaultValue;
-  }
-});
+Inputmask().mask(document.querySelectorAll(".phone-mask"));
+Inputmask("+7(999)999-99-99").mask(".phone-mask");

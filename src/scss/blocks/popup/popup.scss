@@ -108,6 +108,11 @@
     max-width: 30.5rem;
     justify-content: center;
   }
+
+  &__title-consultation {
+    max-width: 40rem;
+    margin-bottom: 2rem;
+  }
   //
 
   //ИНПУТЫ
@@ -147,6 +152,7 @@
     border-radius: 1rem;
     padding: 1.4rem;
     margin-top: 3rem;
+    cursor: pointer;
   }
 
   &__submit-gager {
