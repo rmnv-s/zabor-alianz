@@ -658,8 +658,9 @@
     <section class="popup gager-popup">
       <div class="popup__container">
         <form
-          action=""
-          method=""
+          action="post.php"
+          method="post"
+          enctype="multipart/form-data"
           class="popup__form popup__form-gager"
           name="popup__form-gager"
         >
@@ -672,6 +673,7 @@
             <label class="popup__form-field">
               <input
                 class="popup__input popup__input-name"
+                name="name"
                 type="text"
                 id="name-input"
                 placeholder="Ваше имя"
@@ -680,18 +682,20 @@
                 maxlength="40"
                 required
               />
-              <span class="popup__input-error name-input-error"></span>
             </label>
 
-            <label class="popup__form-field">
+            <label class="popup__form-field popup__form-field_phone">
               <input
-                class="popup__input popup__input-about phone-mask"
+                class="popup__input popup__input-phone phone-mask"
+                name="phone"
                 type="tel"
-                id="tel-input"
+                id="phone-input"
                 placeholder="Ваш номер телефона"
                 required
               />
-              <!-- <span class="popup__input-error about-input-error"></span> -->
+              <span class="popup__input-error"
+                >Пожалуйста, введите номер телефона.</span
+              >
             </label>
 
             <fieldset class="popup__form-set">
@@ -701,12 +705,9 @@
                 </textarea>
               </label>
 
-              <div class="popup__check">
-                <input class="popup__checkbox" type="checkbox" checked />
-                <span class="popup__checkbox-text"
-                  >Согласен на обработку данных</span
-                >
-              </div>
+              <p class="popup__text-personal-data">
+                Даю согласие на обработку персональных <a href="#">данных</a>
+              </p>
             </fieldset>
 
             <button class="popup__submit popup__submit-gager" type="submit">
@@ -721,12 +722,13 @@
     </section>
 
     <!--  -->
-    <section class="popup consultation-popup">
+    <!-- <section class="popup consultation-popup">
       <div class="popup__container">
         <form
-          action=""
-          method=""
+          action="#"
+          method="post"
           class="popup__form popup__form-consultation"
+          enctype="multipart/form-data"
           name="popup__form-consultation"
         >
           <h2 class="popup__title popup__title-consultation">
@@ -737,27 +739,28 @@
           <fieldset class="popup__form-set">
             <label class="popup__form-field">
               <input
-                class="popup__input popup__input-name"
+                class="popup__input"
                 type="text"
-                id="tel-input"
+                id="name-input"
                 placeholder="Ваше имя"
                 value=""
                 minlength="2"
                 maxlength="40"
                 required
               />
-              <span class="popup__input-error name-input-error"></span>
             </label>
 
-            <label class="popup__form-field">
+            <label class="popup__form-field popup__form-field_phone">
               <input
-                class="popup__input popup__input-about phone-mask"
+                class="popup__input popup__input-phone phone-mask"
                 type="tel"
-                id="about-input"
+                id="phone-input"
                 placeholder="Ваш номер телефона"
                 required
               />
-              <!-- <span class="popup__input-error about-input-error"></span> -->
+              <span class="popup__input-error"
+                >Пожалуйста, введите номер телефона.</span
+              >
             </label>
 
             <fieldset class="popup__form-set">
@@ -785,6 +788,18 @@
       <button class="popup__close-btn" type="submit" title="Закрыть">
         Закрыть
       </button>
+    </section> -->
+
+    <section class="popup-success">
+      <div class="popup__container popup__container-success">
+        <div class="popup__success-text">
+          <h3>
+            Спасибо! <br />
+            Заявка принята
+          </h3>
+          <p>Мы скоро вам перезвоним</p>
+        </div>
+      </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -798,6 +813,7 @@
       src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"
     ></script>
 
-    <script type="module" src="./js/script.min.js"></script>
+    <!-- <script type="module" src="./js/script.min.js"></script> -->
+    <script src="./js/script.js"></script>
   </body>
 </html>

@@ -42,7 +42,6 @@
   //
 
   // ФОРМА
-
   &__form {
     display: flex;
     flex-direction: column;
@@ -71,6 +70,10 @@
     display: flex;
     flex-direction: column;
     // margin: 0;
+  }
+
+  &__form-field_phone {
+    position: relative;
   }
 
   & textarea {
@@ -139,15 +142,9 @@
     overflow: hidden;
   }
 
-  //ЧЕКБОКС
-  &__checkbox {
+  &__input-phone {
+    margin-bottom: 3rem;
   }
-
-  &__checkbox-text {
-    position: relative;
-    top: -0.3rem;
-  }
-  //
 
   // КНОПКА ОТПРАВИТЬ
   &__submit {
@@ -190,6 +187,14 @@
       right: 1rem;
     }
   }
+
+  &__text-personal-data {
+    font-size: 1.2rem;
+    & a {
+      color: #1200faff;
+      text-decoration: none;
+    }
+  }
   //
   &_opened {
     /* display: block; */
@@ -201,4 +206,62 @@
     transition: opacity 0.5s, visibility 0.5s ease;
   }
   //
+
+  &__submit-active {
+    background-color: $main-orange;
+    color: #fff;
+  }
+
+  &__input-error {
+    position: absolute;
+    bottom: 1.3rem;
+    left: 0;
+    font-size: 1.2rem;
+    color: #ff0000;
+    font-weight: 500;
+
+    opacity: 0;
+  }
+
+  &__input-error_active {
+    opacity: 1;
+  }
+
+  &__container-success {
+    // position: relative;
+    background-color: rgba(219, 219, 219, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+  }
+
+  &__success-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $main-green;
+    text-align: center;
+    padding: 5rem;
+    border-radius: 1rem;
+
+    & h3 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 1.3rem;
+    }
+
+    & p {
+      font-size: 1.6rem;
+      color: #fff;
+    }
+  }
+}
+
+.popup-success {
+  display: none;
+
+  &-active {
+    display: block;
+  }
 }

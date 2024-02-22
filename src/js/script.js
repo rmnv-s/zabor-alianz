@@ -158,4 +158,95 @@ popups.forEach((popup) => {
 Inputmask().mask(document.querySelectorAll(".phone-mask"));
 Inputmask("+7(999)999-99-99").mask(".phone-mask");
 
-// ВАЛИДАЦИЯ ФОРМ
+// Получаем элемент для поля ввода
+
+const form = document.querySelector(".popup__form");
+const inputError = form.querySelector(".popup__input-error");
+const phoneInput = document.getElementById("phone-input");
+
+let isFormSubmitted = false; // Флаг для отслеживания отправки формы
+
+// Функция для проверки корректности номера телефона
+function validatePhoneNumber() {
+  let isComplete = phoneInput.inputmask.isComplete();
+  if (isComplete) {
+    inputError.classList.remove("popup__input-error_active");
+    return true;
+  } else {
+    inputError.classList.add("popup__input-error_active");
+    return false;
+  }
+}
+
+const formGagerBtn = form.querySelector(".popup__submit-gager");
+const setButtonState = (button, isSending) => {
+  button.disabled = isSending;
+  button.textContent = isSending ? "Отправляем..." : "Вызвать замерщика";
+};
+
+const popupSuccess = document.querySelector(".popup-success");
+async function sendForm(event) {
+  event.preventDefault(); // отключаем перезагрузку/перенаправление страницы
+  setButtonState(formGagerBtn, true);
+  try {
+    // Формируем запрос
+    const response = await fetch(event.target.action, {
+      method: "POST",
+      body: new FormData(event.target),
+    });
+    // проверяем, что ответ есть
+    if (!response.ok)
+      throw `Ошибка при обращении к серверу: ${response.status}`;
+    // проверяем, что ответ действительно JSON
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw "Ошибка обработки. Ответ не JSON";
+    }
+    // обрабатываем запрос
+    const json = await response.json();
+    if (json.result === "success") {
+      // в случае успеха
+      closePopup(popupGager); // Отправляем форму
+      popupSuccess.classList.add("popup-success-active");
+
+      setTimeout(function () {
+        popupSuccess.classList.remove("popup-success-active");
+      }, 2000);
+
+      setButtonState(formGagerBtn, false);
+    } else {
+      // в случае ошибки
+      console.log(json);
+      throw json.info;
+    }
+  } catch (error) {
+    // обработка ошибки
+    alert(error);
+  }
+}
+
+form.addEventListener("submit", async function (evt) {
+  evt.preventDefault(); // Предотвращаем отправку формы
+  isFormSubmitted = true; // Устанавливаем флаг отправки формы
+
+  if (validatePhoneNumber()) {
+    // Если номер корректный
+    try {
+      await sendForm(evt);
+      form.reset(); // Сбрасываем форму
+      isFormSubmitted = false; // Сбрасываем флаг отправки формы
+    } catch (error) {
+      alert(error); // Показываем сообщение об ошибке
+    }
+  } else {
+    // Если номер некорректный, ничего не делаем
+  }
+});
+
+// Обработчик события ввода для поля телефона
+phoneInput.addEventListener("input", function () {
+  if (isFormSubmitted) {
+    // Если форма была отправлена, то при вводе номера проверяем его корректность
+    validatePhoneNumber();
+  }
+});
