@@ -94,11 +94,6 @@ const popupCloseBtn = document.querySelector(".popup__close-btn");
 
 const popups = document.querySelectorAll(".popup");
 
-// const consultationSubmit = document.querySelector(".popup__submit");
-// consultationSubmit.addEventListener("click", (evt) => {
-//   evt.preventDefault();
-// });
-
 const openPopup = (popups) => {
   popups.classList.add("popup_opened");
   window.addEventListener("keydown", closeByEscape);
@@ -159,3 +154,5 @@ popups.forEach((popup) => {
 
 Inputmask().mask(document.querySelectorAll(".phone-mask"));
 Inputmask("+7(999)999-99-99").mask(".phone-mask");
+
+// ВАЛИДАЦИЯ ФОРМ

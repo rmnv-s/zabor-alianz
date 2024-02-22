@@ -76,6 +76,11 @@
       width: 27rem;
       padding: 1rem 0;
       cursor: pointer;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        opacity: 0.8;
+      }
 
       @media (max-width: 768px) {
         width: 17rem;
@@ -86,6 +91,7 @@
     &-btn-online {
       background-color: $main-green;
       margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
 
       @media (max-width: 673px) {
         margin-bottom: 0;
@@ -94,6 +100,7 @@
 
     &-btn-gager {
       background-color: $main-orange;
+      border-radius: 0.5rem;
     }
   }
 }
