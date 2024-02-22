@@ -85,8 +85,9 @@ callBtn.addEventListener("click", () => {
 
 // POPUPs
 const popup = document.querySelector(".popup");
-const btnGager = document.querySelector(".calling__btn-gager");
 const popupGager = document.querySelector(".gager-popup");
+
+const btnGager = document.querySelectorAll(".calling__btn-gager");
 
 const btnСonsultation = document.querySelector(".individual__offer-btn");
 const popupConsultation = document.querySelector(".consultation-popup");
@@ -108,8 +109,10 @@ popupCloseBtn.addEventListener("click", () => {
   closePopup(popupGager);
 });
 
-btnGager.addEventListener("click", () => {
-  openPopup(popupGager);
+btnGager.forEach((i) => {
+  i.addEventListener("click", () => {
+    openPopup(popupGager);
+  });
 });
 
 btnСonsultation.addEventListener("click", () => {
