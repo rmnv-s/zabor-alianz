@@ -310,11 +310,6 @@ const inputPhoneCalculate = calculateForm.querySelector(
 const inputErrorCalculate = calculateForm.querySelector(
   ".popup__input-error_calculate"
 );
-console.log(`Форма калькулятора:`, calculateForm);
-console.log(inputPhoneCalculate);
-console.log(inputErrorCalculate);
-// console.log(`Кнопка отправки калькулятора:`, calculateFormBtn);
-// console.log(`Селект выбора забора:`, fenceOption.value);
 
 calculateForm.addEventListener("submit", async function (evt) {
   evt.preventDefault(); // Предотвращаем отправку формы
