@@ -344,23 +344,31 @@
               Расчитать стоимость
             </h2>
             <!-- FORM -->
-            <form class="calculate__form" action="#" method="post" name="form">
+            <form
+              class="calculate__form"
+              action="post.php"
+              method="post"
+              name="form-calculate"
+            >
               <p class="calculate__form-heading">
                 Выберите подходящие под&nbsp;ваш запрос параметры
               </p>
 
               <fieldset class="calculate__form-col-1">
-                <select id="fence" name="fence">
+                <select id="fence" name="fence" required>
                   <option value="type">Тип забора</option>
-                  <option value="prof">Профнастил</option>
-                  <option value="euro">Евроштакетник</option>
-                  <option value="3d">3D или сетка рабтца</option>
-                  <option value="naves">Навесы</option>
-                  <option value="gates">Ворота распашные, откатные</option>
+                  <option value="Профнастил">Профнастил</option>
+                  <option value="Евроштакетник">Евроштакетник</option>
+                  <option value="3D или сетка рабтца">
+                    3D или сетка рабтца
+                  </option>
+                  <option value="Навесы">Навесы</option>
+                  <option value="Ворота">Ворота распашные, откатные</option>
                 </select>
 
                 <input
                   class="input-length__fence"
+                  name="fence-length"
                   type="number"
                   placeholder="Длинна забора в метрах"
                 />
@@ -369,19 +377,24 @@
               <fieldset class="calculate__form-col-2">
                 <select id="fence-height" name="fence-height">
                   <option value="type">Высота забора</option>
-                  <option value="prof">1.5 м</option>
-                  <option value="euro">2 м</option>
-                  <option value="3d">2.5 м</option>
+                  <option value="1.5м">1.5 м</option>
+                  <option value="2м">2 м</option>
+                  <option value="2.5м">2.5 м</option>
                 </select>
 
-                <input
-                  class="phone-mask"
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="Ваш номер телефона"
-                  required
-                />
+                <label class="calculate__input-phone" for="phone">
+                  <input
+                    class="phone-mask input-phone_calculate"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Ваш номер телефона"
+                    required
+                  />
+                  <span class="popup__input-error popup__input-error_calculate"
+                    >Пожалуйста, введите номер телефона.</span
+                  >
+                </label>
               </fieldset>
 
               <button

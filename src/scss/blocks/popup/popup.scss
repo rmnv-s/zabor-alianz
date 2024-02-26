@@ -236,6 +236,12 @@
     opacity: 1;
   }
 
+  &__input-error_calculate {
+    position: absolute;
+    left: 0;
+    top: 5rem;
+  }
+
   &__container-success {
     position: fixed;
     background-color: rgba(219, 219, 219, 0.8);

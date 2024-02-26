@@ -178,10 +178,10 @@ const inputErrorConsultation = formConsultation.querySelector(
 
 let isFormSubmittedGager = false; // Флаг для отслеживания отправки формы
 let isFormSubmittedConsultation = false; // Флаг для отслеживания отправки формы
+let isFormSubmitCalculate = false; // Флаг для отслеживания отправки формы
 
 // Функция для проверки корректности номера телефона
 function validatePhoneNumber(input, error) {
-  // let isComplete = phoneInput.inputmask.isComplete();
   let isComplete = input.inputmask.isComplete();
   if (isComplete) {
     error.classList.remove("popup__input-error_active");
@@ -232,8 +232,9 @@ async function sendForm(event, success, popup, button) {
     // обрабатываем запрос
     const json = await response.json();
     if (json.result === "success") {
-      // в случае успеха
-      closePopup(popup); // Отправляем форму
+      if (popup) {
+        closePopup(popup);
+      }
       success.classList.add("popup-success-active");
 
       setTimeout(function () {
@@ -265,7 +266,6 @@ formGager.addEventListener("submit", async function (evt) {
       isFormSubmittedGager = false; // Показываем сообщение об ошибке
     }
   } else {
-    // isFormSubmittedGager = false;
   }
 });
 // Обработчик события ввода для поля телефона
@@ -277,29 +277,65 @@ phoneInputGager.addEventListener("input", function () {
 
 formConsultation.addEventListener("submit", async function (evt) {
   evt.preventDefault(); // Предотвращаем отправку формы
-  console.log("форма консультации");
   isFormSubmittedConsultation = true;
-  console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
 
   if (validatePhoneNumber(phoneInputConsultation, inputErrorConsultation)) {
     try {
       await sendForm(evt, popupSuccess, popupConsultation, formConsultationBtn);
       formConsultation.reset(); // Сбрасываем форму
       isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
-      console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
     } catch (error) {
       isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
-      console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
+
       alert(error); // Показываем сообщение об ошибке
     }
   } else {
-    // isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
-    console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
   }
 });
 
 phoneInputConsultation.addEventListener("input", function () {
   if (isFormSubmittedConsultation) {
     validatePhoneNumber(phoneInputConsultation, inputErrorConsultation);
+  }
+});
+
+// ФОРМА КАЛЬКУЛЯТОРА
+
+const calculateForm = document.querySelector(".calculate__form");
+const calculateFormBtn = calculateForm.querySelector(".calculate__form-button");
+const fenceOption = calculateForm.querySelector(".fence");
+const inputPhoneCalculate = calculateForm.querySelector(
+  ".input-phone_calculate"
+);
+const inputErrorCalculate = calculateForm.querySelector(
+  ".popup__input-error_calculate"
+);
+console.log(`Форма калькулятора:`, calculateForm);
+console.log(inputPhoneCalculate);
+console.log(inputErrorCalculate);
+// console.log(`Кнопка отправки калькулятора:`, calculateFormBtn);
+// console.log(`Селект выбора забора:`, fenceOption.value);
+
+calculateForm.addEventListener("submit", async function (evt) {
+  evt.preventDefault(); // Предотвращаем отправку формы
+  isFormSubmitCalculate = true;
+
+  if (validatePhoneNumber(inputPhoneCalculate, inputErrorCalculate)) {
+    try {
+      await sendForm(evt, popupSuccess, undefined, calculateFormBtn);
+      calculateForm.reset(); // Сбрасываем форму
+      isFormSubmitCalculate = false; // Сбрасываем флаг отправки формы
+    } catch (error) {
+      isFormSubmitCalculate = false; // Сбрасываем флаг отправки формы
+
+      alert(error); // Показываем сообщение об ошибке
+    }
+  } else {
+  }
+});
+
+inputPhoneCalculate.addEventListener("input", function () {
+  if (isFormSubmitCalculate) {
+    validatePhoneNumber(inputPhoneCalculate, inputErrorCalculate);
   }
 });

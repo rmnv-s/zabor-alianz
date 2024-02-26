@@ -115,9 +115,15 @@
     }
   }
 
+  &__input-phone {
+    position: relative;
+    display: block;
+  }
+
   fieldset {
     border: none;
     padding: 0;
+    margin-bottom: 0;
   }
 
   input,
