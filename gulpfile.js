@@ -36,7 +36,7 @@ function html() {
         collapseWhitespace: true,
       })
     )
-    .pipe(dest("src"))
+    .pipe(dest("build"))
     .pipe(browserSync.stream());
 }
 
@@ -93,7 +93,7 @@ function source() {
       "src/css/main.min.css",
       "src/fonts/**/*",
       "src/js/script.min.js",
-      "src/*html",
+      // "src/*html",
     ],
     { base: "src" }
   ).pipe(dest("build"));
