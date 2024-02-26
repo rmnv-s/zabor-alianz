@@ -161,33 +161,60 @@ Inputmask("+7(999)999-99-99").mask(".phone-mask");
 // Получаем элемент для поля ввода
 
 const form = document.querySelector(".popup__form");
-const inputError = form.querySelector(".popup__input-error");
-const phoneInput = document.getElementById("phone-input");
 
-let isFormSubmitted = false; // Флаг для отслеживания отправки формы
+const formGager = document.querySelector(".popup__form-gager");
+// const phoneInputGager = formGager.querySelector("#phone-input");
+const phoneInputGager = formGager.querySelector(".popup__input-phone_gager");
+const inputErrorGager = formGager.querySelector(".popup__input-error");
+// console.log(`Форма вызвать замерщика:`, formGager);
+
+const formConsultation = document.querySelector(".popup__form-consultation");
+const phoneInputConsultation = formConsultation.querySelector(
+  ".popup__input-phone_consultation"
+);
+const inputErrorConsultation = formConsultation.querySelector(
+  ".popup__input-error"
+);
+
+let isFormSubmittedGager = false; // Флаг для отслеживания отправки формы
+let isFormSubmittedConsultation = false; // Флаг для отслеживания отправки формы
 
 // Функция для проверки корректности номера телефона
-function validatePhoneNumber() {
-  let isComplete = phoneInput.inputmask.isComplete();
+function validatePhoneNumber(input, error) {
+  // let isComplete = phoneInput.inputmask.isComplete();
+  let isComplete = input.inputmask.isComplete();
   if (isComplete) {
-    inputError.classList.remove("popup__input-error_active");
+    error.classList.remove("popup__input-error_active");
     return true;
   } else {
-    inputError.classList.add("popup__input-error_active");
+    error.classList.add("popup__input-error_active");
     return false;
   }
 }
 
 const formGagerBtn = form.querySelector(".popup__submit-gager");
-const setButtonState = (button, isSending) => {
-  button.disabled = isSending;
-  button.textContent = isSending ? "Отправляем..." : "Вызвать замерщика";
+const formConsultationBtn = popupConsultation.querySelector(
+  ".popup__submit-consultation"
+);
+
+const initialButtonTexts = {};
+document.querySelectorAll(".popup__submit").forEach((button) => {
+  initialButtonTexts[button.classList] = button.textContent.trim();
+});
+
+const setButtonState = (btn, isSending) => {
+  btn.disabled = isSending;
+  btn.textContent = isSending
+    ? "Отправляем..."
+    : initialButtonTexts[btn.classList];
+  console.log(btn.textContent);
 };
 
 const popupSuccess = document.querySelector(".popup-success");
-async function sendForm(event) {
-  event.preventDefault(); // отключаем перезагрузку/перенаправление страницы
-  setButtonState(formGagerBtn, true);
+
+async function sendForm(event, success, popup, button) {
+  event.preventDefault();
+  setButtonState(button, true);
   try {
     // Формируем запрос
     const response = await fetch(event.target.action, {
@@ -206,14 +233,13 @@ async function sendForm(event) {
     const json = await response.json();
     if (json.result === "success") {
       // в случае успеха
-      closePopup(popupGager); // Отправляем форму
-      popupSuccess.classList.add("popup-success-active");
+      closePopup(popup); // Отправляем форму
+      success.classList.add("popup-success-active");
 
       setTimeout(function () {
-        popupSuccess.classList.remove("popup-success-active");
-      }, 2000);
-
-      setButtonState(formGagerBtn, false);
+        success.classList.remove("popup-success-active");
+      }, 3000);
+      setButtonState(button, false);
     } else {
       // в случае ошибки
       console.log(json);
@@ -225,28 +251,49 @@ async function sendForm(event) {
   }
 }
 
-form.addEventListener("submit", async function (evt) {
+formGager.addEventListener("submit", async function (evt) {
   evt.preventDefault(); // Предотвращаем отправку формы
-  isFormSubmitted = true; // Устанавливаем флаг отправки формы
+  isFormSubmittedGager = true; // Устанавливаем флаг отправки формы
 
-  if (validatePhoneNumber()) {
-    // Если номер корректный
+  if (validatePhoneNumber(phoneInputGager, inputErrorGager)) {
     try {
-      await sendForm(evt);
-      form.reset(); // Сбрасываем форму
-      isFormSubmitted = false; // Сбрасываем флаг отправки формы
+      await sendForm(evt, popupSuccess, popupGager, formGagerBtn);
+      formGager.reset(); // Сбрасываем форму
+      isFormSubmittedGager = false; // Сбрасываем флаг отправки формы
     } catch (error) {
-      alert(error); // Показываем сообщение об ошибке
+      alert(error);
+      isFormSubmittedGager = false; // Показываем сообщение об ошибке
     }
   } else {
-    // Если номер некорректный, ничего не делаем
+  }
+});
+// Обработчик события ввода для поля телефона
+phoneInputGager.addEventListener("input", function () {
+  if (isFormSubmittedGager) {
+    validatePhoneNumber(phoneInputGager, inputErrorGager);
   }
 });
 
-// Обработчик события ввода для поля телефона
-phoneInput.addEventListener("input", function () {
-  if (isFormSubmitted) {
-    // Если форма была отправлена, то при вводе номера проверяем его корректность
-    validatePhoneNumber();
+formConsultation.addEventListener("submit", async function (evt) {
+  evt.preventDefault(); // Предотвращаем отправку формы
+  console.log("форма консультации");
+  isFormSubmittedConsultation = true; // Устанавливаем флаг отправки формы
+
+  if (validatePhoneNumber(phoneInputConsultation, inputErrorConsultation)) {
+    try {
+      await sendForm(evt, popupSuccess, popupConsultation, formConsultationBtn);
+      formConsultation.reset(); // Сбрасываем форму
+      isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
+    } catch (error) {
+      isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
+      alert(error); // Показываем сообщение об ошибке
+    }
+  } else {
+  }
+});
+
+phoneInputConsultation.addEventListener("input", function () {
+  if (isFormSubmittedConsultation) {
+    validatePhoneNumber(phoneInputConsultation, inputErrorConsultation);
   }
 });

@@ -384,7 +384,10 @@
                 />
               </fieldset>
 
-              <button class="calculate__form-button" type="submit">
+              <button
+                class="popup__submit calculate__form-button"
+                type="submit"
+              >
                 Получить расчёт
               </button>
             </form>
@@ -686,7 +689,7 @@
 
             <label class="popup__form-field popup__form-field_phone">
               <input
-                class="popup__input popup__input-phone phone-mask"
+                class="popup__input popup__input-phone popup__input-phone_gager phone-mask"
                 name="phone"
                 type="tel"
                 id="phone-input"
@@ -722,11 +725,12 @@
     </section>
 
     <!--  -->
-    <!-- <section class="popup consultation-popup">
+    <section class="popup consultation-popup">
       <div class="popup__container">
         <form
-          action="#"
+          action="post.php"
           method="post"
+          enctype="multipart/form-data"
           class="popup__form popup__form-consultation"
           enctype="multipart/form-data"
           name="popup__form-consultation"
@@ -740,6 +744,7 @@
             <label class="popup__form-field">
               <input
                 class="popup__input"
+                name="name"
                 type="text"
                 id="name-input"
                 placeholder="Ваше имя"
@@ -752,7 +757,8 @@
 
             <label class="popup__form-field popup__form-field_phone">
               <input
-                class="popup__input popup__input-phone phone-mask"
+                class="popup__input popup__input-phone popup__input-phone_consultation phone-mask"
+                name="phone"
                 type="tel"
                 id="phone-input"
                 placeholder="Ваш номер телефона"
@@ -770,16 +776,15 @@
                     </textarea
                 >
               </label>
-
-              <div class="popup__check">
-                <input class="popup__checkbox" type="checkbox" checked />
-                <span class="popup__checkbox-text"
-                  >Согласен на обработку данных</span
-                >
-              </div>
+              <p class="popup__text-personal-data">
+                Даю согласие на обработку персональных <a href="#">данных</a>
+              </p>
             </fieldset>
 
-            <button class="popup__submit popup__submit-gager" type="submit">
+            <button
+              class="popup__submit popup__submit-consultation"
+              type="submit"
+            >
               Проконсультироваться
             </button>
           </fieldset>
@@ -788,7 +793,7 @@
       <button class="popup__close-btn" type="submit" title="Закрыть">
         Закрыть
       </button>
-    </section> -->
+    </section>
 
     <section class="popup-success">
       <div class="popup__container popup__container-success">
