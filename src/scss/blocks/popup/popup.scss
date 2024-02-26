@@ -155,11 +155,20 @@
     padding: 1.4rem;
     margin-top: 3rem;
     cursor: pointer;
+    transition: all 0.3s ease-in;
+    color: $main-orange;
+    border: 1px solid $main-orange;
+
+    &:hover {
+      background-color: $main-orange;
+      color: #fff;
+    }
   }
 
   &__submit-gager {
-    color: $main-orange;
-    border: 1px solid $main-orange;
+  }
+
+  &__submit-consultation {
   }
   //
 

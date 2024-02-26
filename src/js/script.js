@@ -265,6 +265,7 @@ formGager.addEventListener("submit", async function (evt) {
       isFormSubmittedGager = false; // Показываем сообщение об ошибке
     }
   } else {
+    // isFormSubmittedGager = false;
   }
 });
 // Обработчик события ввода для поля телефона
@@ -277,18 +278,23 @@ phoneInputGager.addEventListener("input", function () {
 formConsultation.addEventListener("submit", async function (evt) {
   evt.preventDefault(); // Предотвращаем отправку формы
   console.log("форма консультации");
-  isFormSubmittedConsultation = true; // Устанавливаем флаг отправки формы
+  isFormSubmittedConsultation = true;
+  console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
 
   if (validatePhoneNumber(phoneInputConsultation, inputErrorConsultation)) {
     try {
       await sendForm(evt, popupSuccess, popupConsultation, formConsultationBtn);
       formConsultation.reset(); // Сбрасываем форму
       isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
+      console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
     } catch (error) {
       isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
+      console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
       alert(error); // Показываем сообщение об ошибке
     }
   } else {
+    // isFormSubmittedConsultation = false; // Сбрасываем флаг отправки формы
+    console.log(isFormSubmittedConsultation); // Устанавливаем флаг отправки формы
   }
 });
 
