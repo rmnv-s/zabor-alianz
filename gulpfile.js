@@ -1,6 +1,7 @@
 const { src, dest, watch, parallel, series } = require("gulp");
 const sass = require("gulp-dart-sass");
 const concat = require("gulp-concat");
+const htmlmin = require("gulp-htmlmin");
 const browserSync = require("browser-sync").create();
 const autoprefixer = require("gulp-autoprefixer");
 const imagemin = require("gulp-imagemin");
@@ -17,6 +18,26 @@ function browsersync() {
     browser: "Arc",
     notify: false,
   });
+}
+
+// gulp.task("minify", () => {
+//   return gulp
+//     .src("src/*.html")
+//     .pipe(htmlmin({ collapseWhitespace: true }))
+//     .pipe(gulp.dest("dist"));
+// });
+
+function html() {
+  return src("src/*.html")
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      })
+    )
+    .pipe(dest("src"))
+    .pipe(browserSync.stream());
 }
 
 function scripts() {
@@ -89,6 +110,7 @@ function cleanSrc() {
   return del("./build");
 }
 
+exports.html = html;
 exports.styles = styles;
 exports.watching = watching;
 exports.browsersync = browsersync;
@@ -97,5 +119,5 @@ exports.scripts = scripts;
 exports.images = images;
 exports.cleanDist = cleanSrc;
 
-exports.build = series(cleanSrc, images, source, scripts);
+exports.build = series(cleanSrc, html, images, source, scripts);
 exports.default = parallel(scripts, browsersync, watching);
