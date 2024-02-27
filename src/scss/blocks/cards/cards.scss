@@ -83,9 +83,9 @@
   &__btn {
     border: none;
     background: transparent;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    color: $main-black;
+    color: $main-grey;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -164,4 +164,22 @@
       padding: 0.5rem 1.8rem;
     }
   }
+}
+
+.card-popup__description {
+  display: none;
+}
+
+.popup-card__text {
+  // display: block;
+  font-size: 1.5rem;
+  line-height: 2.1rem;
+  margin-bottom: 1rem;
+}
+
+.popup-card__heading {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: $main-orange;
+  margin-bottom: 1rem;
 }

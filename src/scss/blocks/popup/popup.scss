@@ -271,8 +271,30 @@
       color: #fff;
     }
   }
+
+  &__container-card {
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+    background-color: transparent;
+  }
 }
 
+.popup-card__inner {
+  // outline: 1px solid blue;
+  margin-top: 3rem;
+  padding: 2rem;
+
+  @media (max-width: 425px) {
+    padding: 0 0 1rem 0;
+  }
+}
+
+.popup-card__close-btn {
+  z-index: 1000;
+}
 .popup-success {
   display: none;
 

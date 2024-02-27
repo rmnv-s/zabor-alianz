@@ -334,3 +334,71 @@ inputPhoneCalculate.addEventListener("input", function () {
     validatePhoneNumber(inputPhoneCalculate, inputErrorCalculate);
   }
 });
+//
+//
+// МАССИИ ТЕКСТА ОПИСАНИЯ ЗАБОРОВ
+const data = [
+  {
+    id: 1,
+    name: "Профнастил",
+    description: "Описание о Профнастил",
+  },
+  {
+    id: 2,
+    name: "Евроштакетник",
+    description: "Описание о Евроштакетник",
+  },
+  {
+    id: 3,
+    name: "Заборы 3D",
+    description: "Описание о 3D",
+  },
+  {
+    id: 4,
+    name: "Навесы",
+    description: "Описание о Навесы",
+  },
+  {
+    id: 5,
+    name: "Ворота",
+    description: "Описание о Ворота",
+  },
+];
+
+const descr = data.map((i) => i.description);
+
+// КАРТОЧКИ ЗАБОРОВ
+const cardBtnDetail = document.querySelectorAll(".card__btn");
+const cardListHeading = document.querySelector(".card__list-heading");
+const cardPopup = document.querySelector(".card-popup");
+
+const cardPopupHeading = cardPopup.querySelector(".popup-card__heading");
+const cardPopupHeadingNew = cardPopup.querySelector(
+  ".card-popup__description-heading"
+);
+const cardPopupText = cardPopup.querySelector(".popup-card__text");
+const cardPopupTextOne = cardPopup.querySelector(".popup-card__text_1");
+const cardPopupTextTwo = cardPopup.querySelector(".popup-card__text_2");
+
+cardBtnDetail.forEach((item) => {
+  item.addEventListener("click", () => {
+    openPopup(cardPopup);
+
+    // Находим родительский элемент карточки
+    const card = item.closest(".card__list");
+    const cardTitlePopup = card.querySelector(
+      ".card-popup__description-heading"
+    );
+    const cardTextPopup = card.querySelector(".card__text-description");
+    const cardTextPopupOne = card.querySelector(".card__text-description-1");
+    const cardTextPopupTwo = card.querySelector(".card__text-description-2");
+    // Получаем title карточки
+    cardPopupHeading.textContent = cardTitlePopup.textContent;
+
+    cardPopupText.textContent = cardTextPopup.textContent;
+    cardPopupTextOne.textContent = cardTextPopupOne.textContent;
+    cardPopupTextTwo.textContent = cardTextPopupTwo.textContent;
+
+    console.log(`Текст всамой карточке:`, cardTextPopup);
+  });
+});
