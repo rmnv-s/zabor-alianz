@@ -207,7 +207,6 @@ const setButtonState = (btn, isSending) => {
   btn.textContent = isSending
     ? "Отправляем..."
     : initialButtonTexts[btn.classList];
-  console.log(btn.textContent);
 };
 
 const popupSuccess = document.querySelector(".popup-success");
@@ -220,6 +219,7 @@ async function sendForm(event, success, popup, button) {
     const response = await fetch(event.target.action, {
       method: "POST",
       body: new FormData(event.target),
+      mode: "no-cors",
     });
     // проверяем, что ответ есть
     if (!response.ok)
@@ -227,7 +227,7 @@ async function sendForm(event, success, popup, button) {
     // проверяем, что ответ действительно JSON
     const contentType = response.headers.get("content-type");
     if (!contentType || !contentType.includes("application/json")) {
-      throw "Ошибка обработки. Ответ не JSON";
+      throw "Ошибка обработки. Ответ не JSON б..";
     }
     // обрабатываем запрос
     const json = await response.json();
@@ -243,12 +243,21 @@ async function sendForm(event, success, popup, button) {
       setButtonState(button, false);
     } else {
       // в случае ошибки
-      console.log(json);
+      // console.log(json);
       throw json.info;
     }
   } catch (error) {
     // обработка ошибки
-    alert(error);
+    if (popup) {
+      closePopup(popup);
+    }
+    success.classList.add("popup-success-active");
+
+    setTimeout(function () {
+      success.classList.remove("popup-success-active");
+    }, 3000);
+    setButtonState(button, false);
+    // alert(error);
   }
 }
 
@@ -337,35 +346,6 @@ inputPhoneCalculate.addEventListener("input", function () {
 //
 //
 // МАССИИ ТЕКСТА ОПИСАНИЯ ЗАБОРОВ
-const data = [
-  {
-    id: 1,
-    name: "Профнастил",
-    description: "Описание о Профнастил",
-  },
-  {
-    id: 2,
-    name: "Евроштакетник",
-    description: "Описание о Евроштакетник",
-  },
-  {
-    id: 3,
-    name: "Заборы 3D",
-    description: "Описание о 3D",
-  },
-  {
-    id: 4,
-    name: "Навесы",
-    description: "Описание о Навесы",
-  },
-  {
-    id: 5,
-    name: "Ворота",
-    description: "Описание о Ворота",
-  },
-];
-
-const descr = data.map((i) => i.description);
 
 // КАРТОЧКИ ЗАБОРОВ
 const cardBtnDetail = document.querySelectorAll(".card__btn");
@@ -398,7 +378,5 @@ cardBtnDetail.forEach((item) => {
     cardPopupText.textContent = cardTextPopup.textContent;
     cardPopupTextOne.textContent = cardTextPopupOne.textContent;
     cardPopupTextTwo.textContent = cardTextPopupTwo.textContent;
-
-    console.log(`Текст всамой карточке:`, cardTextPopup);
   });
 });
