@@ -20,13 +20,6 @@ function browsersync() {
   });
 }
 
-// gulp.task("minify", () => {
-//   return gulp
-//     .src("src/*.html")
-//     .pipe(htmlmin({ collapseWhitespace: true }))
-//     .pipe(gulp.dest("dist"));
-// });
-
 function html() {
   return src("src/*.html")
     .pipe(
@@ -93,6 +86,8 @@ function source() {
       "src/css/main.min.css",
       "src/fonts/**/*",
       "src/js/script.min.js",
+      "src/privacy/**/*",
+
       // "src/*html",
     ],
     { base: "src" }
