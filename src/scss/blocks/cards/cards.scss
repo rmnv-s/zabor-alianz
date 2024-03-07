@@ -15,25 +15,27 @@
     border-bottom: 1px solid $subline-color-grey;
     transition: all 0.7s, visibility 0.5s ease;
 
-    &:hover {
-      background-color: $main-orange;
-      cursor: pointer;
+    @media (min-width: 768px) {
+      &:hover {
+        background-color: $main-orange;
+        cursor: pointer;
 
-      .card__list-heading-price,
-      .card__list-heading {
-        color: #fff;
-      }
-      .card__list-heading {
-        padding-left: 2rem;
-      }
+        .card__list-heading-price,
+        .card__list-heading {
+          color: #fff;
+        }
+        .card__list-heading {
+          padding-left: 2rem;
+        }
 
-      .card__description-text,
-      .card__btn {
-        color: #e8e8e8;
-      }
+        .card__description-text,
+        .card__btn {
+          color: #e8e8e8;
+        }
 
-      .card__img {
-        transform: translateX(-2rem);
+        .card__img {
+          transform: translateX(-2rem);
+        }
       }
     }
 
