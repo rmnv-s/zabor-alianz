@@ -36,6 +36,7 @@
   }
 
   &__form {
+    position: relative;
     grid-column: 2/4;
 
     display: grid;
@@ -74,6 +75,7 @@
 
     &-button {
       margin-right: 4rem;
+      margin-top: 2rem;
       font-size: 1.6rem;
       line-height: 2.4;
       letter-spacing: 3%;
@@ -141,6 +143,14 @@
   select {
     color: $main-black;
     // color: $main-orange;
+  }
+
+  &__text-privacy {
+    position: absolute;
+    bottom: 6.5rem;
+    max-width: 23rem;
+    line-height: 1.6rem;
+    color: #aaa;
   }
 }
 
