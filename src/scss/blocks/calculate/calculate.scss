@@ -176,3 +176,13 @@
 .calculate__form-price span {
   font-weight: bold;
 }
+
+.calculate__form-price-number {
+  color: $main-orange;
+}
+
+.calculate__form-col-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

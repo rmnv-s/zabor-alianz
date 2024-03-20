@@ -653,7 +653,7 @@
             <form
               class="calculate__form"
               action="#"
-              method="post"
+              method="#"
               name="form-calculate"
             >
               <p class="calculate__form-heading">
@@ -662,16 +662,17 @@
 
               <fieldset class="calculate__form-col-1">
                 <select id="fence" name="fence" required>
-                  <option value="type">Тип забора</option>
+                  <option value="">Тип забора</option>
                   <option value="Профнастил">Профнастил</option>
                   <option value="Евроштакетник">Евроштакетник</option>
-                  <option value="3D">3D или сетка рабтца</option>
+                  <option value="3D">3D забор</option>
+                  <option value="Рабица">Сетка рабица</option>
                   <option value="Навесы">Навесы</option>
                   <option value="Ворота">Ворота распашные, откатные</option>
                 </select>
 
                 <select id="fence-height" name="fence-height">
-                  <option value="type">Высота забора</option>
+                  <option value="">Выберите высоту забора</option>
                   <option value="1.5">1.5 м</option>
                   <option value="1.7">1.7 м</option>
                   <option value="1.8">1.8 м</option>
@@ -690,11 +691,12 @@
                   type="number"
                   placeholder="Длинна забора в метрах"
                 />
-
                 <!--  -->
               </fieldset>
               <fieldset class="calculate__form-col-2">
-                <p class="calculate__form-price">Итого: <span>0₽</span></p>
+                <p class="calculate__form-price">
+                  Итого: <span class="calculate__form-price-number">0 ₽</span>
+                </p>
               </fieldset>
 
               <button class="calculate__form-button" type="submit">
