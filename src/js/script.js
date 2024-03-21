@@ -462,14 +462,14 @@ calculateForm.addEventListener("submit", async function (evt) {
   console.log(selectedOption);
   if (selectedOption) {
     // Извлекаем стоимость из выбранного объекта
-    //     const price = selectedOption.price;
+    const price = selectedOption.price;
     //     // Вычисляем итоговую стоимость с учетом длины забора
-    //     const totalPrice = price * parseFloat(fenceInputLengthMetre.value);
+    const totalPrice = price * parseFloat(fenceInputLengthMetre.value);
     //     // Устанавливаем итоговую стоимость в состояние
-    //     priceNumber.textContent = `${totalPrice} ₽`;
+    priceNumber.textContent = `${totalPrice} ₽`;
     //
-    //     fenceOptionHeight.value = "";
-    //     fenceInputLengthMetre.value = "";
+    fenceOptionHeight.value = "";
+    fenceInputLengthMetre.value = "";
   }
 });
 
@@ -510,7 +510,7 @@ fenceOption.addEventListener("change", () => {
     calculateFormPrice.classList.remove("input-hidden");
   }
 
-  if (optionElement && selectedValue === "3D") {
+  if ((optionElement && selectedValue === "3D") || selectedValue === "Рабица") {
     optionElement.style.display = "none";
     // optionElementValueType.textContent = "Высота забора";
   } else {
@@ -518,7 +518,10 @@ fenceOption.addEventListener("change", () => {
   }
 
   // Проверяем текущее значение fenceOptionHeight
-  if (fenceOptionHeight.value === "1.7" && selectedValue === "3D") {
+  if (
+    (fenceOptionHeight.value === "1.7" && selectedValue === "3D") ||
+    selectedValue === "Рабица"
+  ) {
     // Если текущее значение равно "1.7" и выбрано "3D", сбрасываем его на значение "type"
     fenceOptionHeight.value = "";
   }
