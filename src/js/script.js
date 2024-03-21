@@ -423,7 +423,7 @@ const dataPrice = [
   },
   {
     name: "Навесы",
-    price: 999,
+    price: 4400,
   },
 ];
 // //////////////////////////////
@@ -443,6 +443,7 @@ const priceNumber = calculateForm.querySelector(
   ".calculate__form-price-number"
 );
 const fenceInputRoof = calculateForm.querySelector(".input-length__roof");
+const gates = calculateForm.querySelector(".gates");
 
 // КНОПКА ПОДСЧЕТА
 calculateForm.addEventListener("submit", async function (evt) {
@@ -455,11 +456,19 @@ calculateForm.addEventListener("submit", async function (evt) {
         option.name === fenceOption.value
       );
     } else {
+      // return option.name === fenceOption.value;
+    }
+  });
+
+  const selectedOptionNaves = dataPrice.find((option) => {
+    if (fenceOption.value === "Навесы") {
       return option.name === fenceOption.value;
     }
   });
 
-  console.log(selectedOption);
+  // console.log(selectedOption);
+  // console.log(selectedOptionNaves);
+
   if (selectedOption) {
     // Извлекаем стоимость из выбранного объекта
     const price = selectedOption.price;
@@ -467,9 +476,16 @@ calculateForm.addEventListener("submit", async function (evt) {
     const totalPrice = price * parseFloat(fenceInputLengthMetre.value);
     //     // Устанавливаем итоговую стоимость в состояние
     priceNumber.textContent = `${totalPrice} ₽`;
-    //
+
     fenceOptionHeight.value = "";
     fenceInputLengthMetre.value = "";
+  }
+  if (selectedOptionNaves) {
+    const price = selectedOptionNaves.price;
+    const totalPrice = price * parseFloat(fenceInputRoof.value);
+    priceNumber.textContent = `${totalPrice} ₽`;
+
+    fenceInputRoof.value = "";
   }
 });
 
@@ -492,6 +508,10 @@ fenceOption.addEventListener("change", () => {
     fenceInputRoof.classList.add("input-hidden");
     fenceInputLengthMetre.setAttribute("required", "");
     fenceOptionHeight.setAttribute("required", "");
+    fenceInputRoof.removeAttribute("required", "");
+
+    gates.classList.add("input-hidden");
+    calculateFormBtn.style.display = "block";
   }
   if (selectedValue === "Навесы") {
     fenceOptionHeight.classList.add("input-hidden");
@@ -500,12 +520,18 @@ fenceOption.addEventListener("change", () => {
     fenceInputRoof.setAttribute("required", "");
     fenceInputLengthMetre.removeAttribute("required", "");
     fenceOptionHeight.removeAttribute("required", "");
+
+    gates.classList.add("input-hidden");
+    calculateFormBtn.style.display = "block";
   }
   if (selectedValue === "Ворота") {
     fenceOptionHeight.classList.add("input-hidden");
     fenceInputLengthMetre.classList.add("input-hidden");
     fenceInputRoof.classList.add("input-hidden");
     calculateFormPrice.classList.add("input-hidden");
+
+    gates.classList.remove("input-hidden");
+    calculateFormBtn.style.display = "none";
   } else {
     calculateFormPrice.classList.remove("input-hidden");
   }
@@ -527,4 +553,24 @@ fenceOption.addEventListener("change", () => {
   }
 
   //
+});
+
+// fenceInputLengthMetre.addEventListener("input", ({ target: t }) => {
+//   t.value = Math.max(t.min, Math.min(t.max, t.value));
+// });
+
+// document.querySelector('input').addEventListener('input', ({ target: t }) => {
+//   t.value = Math.max(t.min, Math.min(t.max, t.value));
+// });
+
+fenceInputLengthMetre.addEventListener("input", function () {
+  if (this.value.length > 4) {
+    this.value = this.value.slice(0, 4); // Обрезаем значение до 4 символов
+  }
+});
+
+fenceInputRoof.addEventListener("input", function () {
+  if (this.value.length > 4) {
+    this.value = this.value.slice(0, 4); // Обрезаем значение до 4 символов
+  }
 });

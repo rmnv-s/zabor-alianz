@@ -689,19 +689,45 @@
                   class="input-length__fence input-length__fence-metre"
                   name="fence-length"
                   type="number"
+                  min="0"
+                  max="9999"
                   placeholder="Длинна забора в метрах"
                 />
-                <!--  -->
-              </fieldset>
-              <fieldset class="calculate__form-col-2">
-                <p class="calculate__form-price">
-                  Итого: <span class="calculate__form-price-number">0 ₽</span>
-                </p>
-              </fieldset>
 
-              <button class="calculate__form-button" type="submit">
-                Расчитать
-              </button>
+                <ul class="gates input-hidden">
+                  <li class="gates__inner">
+                    <p>Откатные механические ворота с&nbsp;установкой</p>
+                    <span>от 75 000₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Автоматезированные ворота с&nbsp;установкой</p>
+                    <span>от 110 000₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Калитка под врезной замок</p>
+                    <span>от 7 500₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Ворота с калиткой (стандартный&nbsp;комплект)</p>
+                    <span>от 13 500₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Ворота и калитка в раме комплекте</p>
+                    <span>от 17 800₽</span>
+                  </li>
+                </ul>
+
+                <!--  -->
+                <fieldset class="calculate__form-col-2">
+                  <p class="calculate__form-price">
+                    Итого: <span class="calculate__form-price-number">0 ₽</span>
+                  </p>
+                </fieldset>
+
+                <button class="calculate__form-button" type="submit">
+                  Расчитать
+                </button>
+              </fieldset>
             </form>
           </div>
         </section>
