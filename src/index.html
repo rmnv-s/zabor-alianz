@@ -652,8 +652,8 @@
             <!-- FORM -->
             <form
               class="calculate__form"
-              action="post.php"
-              method="post"
+              action="#"
+              method="#"
               name="form-calculate"
             >
               <p class="calculate__form-heading">
@@ -662,59 +662,72 @@
 
               <fieldset class="calculate__form-col-1">
                 <select id="fence" name="fence" required>
-                  <option value="type">Тип забора</option>
+                  <option value="">Тип забора</option>
                   <option value="Профнастил">Профнастил</option>
                   <option value="Евроштакетник">Евроштакетник</option>
-                  <option value="3D или сетка рабтца">
-                    3D или сетка рабтца
-                  </option>
+                  <option value="3D">3D забор</option>
+                  <option value="Рабица">Сетка рабица</option>
                   <option value="Навесы">Навесы</option>
                   <option value="Ворота">Ворота распашные, откатные</option>
                 </select>
 
+                <select id="fence-height" name="fence-height">
+                  <option value="">Выберите высоту забора</option>
+                  <option value="1.5">1.5 м</option>
+                  <option value="1.7">1.7 м</option>
+                  <option value="1.8">1.8 м</option>
+                  <option value="2">2 м</option>
+                </select>
+
                 <input
-                  class="input-length__fence"
+                  class="input-length__fence input-length__roof input-hidden"
                   name="fence-length"
                   type="number"
+                  placeholder="Размер навеса (кв.м)"
+                />
+                <input
+                  class="input-length__fence input-length__fence-metre"
+                  name="fence-length"
+                  type="number"
+                  min="0"
+                  max="9999"
                   placeholder="Длинна забора в метрах"
                 />
 
-                <!--  -->
-              </fieldset>
-              <fieldset class="calculate__form-col-2">
-                <select id="fence-height" name="fence-height">
-                  <option value="type">Высота забора</option>
-                  <option value="1.5м">1.5 м</option>
-                  <option value="2м">2 м</option>
-                  <option value="2.5м">2.5 м</option>
-                </select>
+                <ul class="gates input-hidden">
+                  <li class="gates__inner">
+                    <p>Откатные механические ворота с&nbsp;установкой</p>
+                    <span>от 75 000₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Автоматезированные ворота с&nbsp;установкой</p>
+                    <span>от 110 000₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Калитка под врезной замок</p>
+                    <span>от 7 500₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Ворота с калиткой (стандартный&nbsp;комплект)</p>
+                    <span>от 13 500₽</span>
+                  </li>
+                  <li class="gates__inner">
+                    <p>Ворота и калитка в раме комплекте</p>
+                    <span>от 17 800₽</span>
+                  </li>
+                </ul>
 
-                <label class="calculate__input-phone" for="phone">
-                  <input
-                    class="phone-mask input-phone_calculate"
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Ваш номер телефона"
-                    required
-                  />
-                  <span class="popup__input-error popup__input-error_calculate"
-                    >Пожалуйста, введите номер телефона.</span
-                  >
-                </label>
+                <!--  -->
+                <fieldset class="calculate__form-col-2">
+                  <p class="calculate__form-price">
+                    Итого: <span class="calculate__form-price-number">0 ₽</span>
+                  </p>
+                </fieldset>
+
+                <button class="calculate__form-button" type="submit">
+                  Расчитать
+                </button>
               </fieldset>
-              <p class="popup__text-personal-data calculate__text-privacy">
-                Оставляя заявку Вы соглашаетесь на обработку
-                <a href="./privacy/privacy.pdf" target="_blank">
-                  персональных данных</a
-                >
-              </p>
-              <button
-                class="popup__submit calculate__form-button"
-                type="submit"
-              >
-                Получить расчёт
-              </button>
             </form>
           </div>
         </section>

@@ -308,44 +308,7 @@ phoneInputConsultation.addEventListener("input", function () {
   }
 });
 
-// ФОРМА КАЛЬКУЛЯТОРА
-
-const calculateForm = document.querySelector(".calculate__form");
-const calculateFormBtn = calculateForm.querySelector(".calculate__form-button");
-const fenceOption = calculateForm.querySelector(".fence");
-const inputPhoneCalculate = calculateForm.querySelector(
-  ".input-phone_calculate"
-);
-const inputErrorCalculate = calculateForm.querySelector(
-  ".popup__input-error_calculate"
-);
-
-calculateForm.addEventListener("submit", async function (evt) {
-  evt.preventDefault(); // Предотвращаем отправку формы
-  isFormSubmitCalculate = true;
-
-  if (validatePhoneNumber(inputPhoneCalculate, inputErrorCalculate)) {
-    try {
-      await sendForm(evt, popupSuccess, undefined, calculateFormBtn);
-      calculateForm.reset(); // Сбрасываем форму
-      isFormSubmitCalculate = false; // Сбрасываем флаг отправки формы
-    } catch (error) {
-      isFormSubmitCalculate = false; // Сбрасываем флаг отправки формы
-
-      alert(error); // Показываем сообщение об ошибке
-    }
-  } else {
-  }
-});
-
-inputPhoneCalculate.addEventListener("input", function () {
-  if (isFormSubmitCalculate) {
-    validatePhoneNumber(inputPhoneCalculate, inputErrorCalculate);
-  }
-});
 //
-//
-// МАССИИ ТЕКСТА ОПИСАНИЯ ЗАБОРОВ
 
 // КАРТОЧКИ ЗАБОРОВ
 const cardBtnDetail = document.querySelectorAll(".card__btn");
@@ -379,4 +342,235 @@ cardBtnDetail.forEach((item) => {
     cardPopupTextOne.textContent = cardTextPopupOne.textContent;
     cardPopupTextTwo.textContent = cardTextPopupTwo.textContent;
   });
+});
+
+// //////////////////////////////
+
+const dataPrice = [
+  {
+    name: "Евроштакетник",
+    height: "1.5",
+    price: 1900,
+  },
+  {
+    name: "Евроштакетник",
+    height: "1.7",
+    price: 2060,
+  },
+  {
+    name: "Евроштакетник",
+    height: "1.8",
+    price: 2180,
+  },
+  {
+    name: "Евроштакетник",
+    height: "2",
+    price: 2320,
+  },
+  //
+  {
+    name: "Профнастил",
+    height: "1.5",
+    price: 1600,
+  },
+  {
+    name: "Профнастил",
+    height: "1.7",
+    price: 1750,
+  },
+  {
+    name: "Профнастил",
+    height: "1.8",
+    price: 1800,
+  },
+  {
+    name: "Профнастил",
+    height: "2",
+    price: 1920,
+  },
+  //
+  {
+    name: "Рабица",
+    height: "1.5",
+    price: 680,
+  },
+  {
+    name: "Рабица",
+    height: "1.8",
+    price: 730,
+  },
+  {
+    name: "Рабица",
+    height: "2.0",
+    price: 860,
+  },
+
+  // 3D
+  {
+    name: "3D",
+    height: "1.5",
+    price: 1450,
+  },
+  {
+    name: "3D",
+    height: "1.8",
+    price: 1450,
+  },
+  {
+    name: "3D",
+    height: "2.0",
+    price: 1450,
+  },
+  {
+    name: "Навесы",
+    price: 4400,
+  },
+];
+// //////////////////////////////
+
+// CALCULAT
+// ФОРМА КАЛЬКУЛЯТОРА
+const calculateFormPrice = document.querySelector(".calculate__form-price");
+
+const calculateForm = document.querySelector(".calculate__form");
+const calculateFormBtn = calculateForm.querySelector(".calculate__form-button");
+const fenceOption = calculateForm.querySelector("#fence");
+const fenceOptionHeight = calculateForm.querySelector("#fence-height");
+const fenceInputLengthMetre = calculateForm.querySelector(
+  ".input-length__fence-metre"
+);
+const priceNumber = calculateForm.querySelector(
+  ".calculate__form-price-number"
+);
+const fenceInputRoof = calculateForm.querySelector(".input-length__roof");
+const gates = calculateForm.querySelector(".gates");
+
+// КНОПКА ПОДСЧЕТА
+calculateForm.addEventListener("submit", async function (evt) {
+  evt.preventDefault();
+  // Находим соответствующий объект в массиве formEuroData
+  const selectedOption = dataPrice.find((option) => {
+    if (fenceOption.value !== "Навесы") {
+      return (
+        option.height === fenceOptionHeight.value &&
+        option.name === fenceOption.value
+      );
+    } else {
+      // return option.name === fenceOption.value;
+    }
+  });
+
+  const selectedOptionNaves = dataPrice.find((option) => {
+    if (fenceOption.value === "Навесы") {
+      return option.name === fenceOption.value;
+    }
+  });
+
+  // console.log(selectedOption);
+  // console.log(selectedOptionNaves);
+
+  if (selectedOption) {
+    // Извлекаем стоимость из выбранного объекта
+    const price = selectedOption.price;
+    //     // Вычисляем итоговую стоимость с учетом длины забора
+    const totalPrice = price * parseFloat(fenceInputLengthMetre.value);
+    //     // Устанавливаем итоговую стоимость в состояние
+    priceNumber.textContent = `${totalPrice} ₽`;
+
+    fenceOptionHeight.value = "";
+    fenceInputLengthMetre.value = "";
+  }
+  if (selectedOptionNaves) {
+    const price = selectedOptionNaves.price;
+    const totalPrice = price * parseFloat(fenceInputRoof.value);
+    priceNumber.textContent = `${totalPrice} ₽`;
+
+    fenceInputRoof.value = "";
+  }
+});
+
+const optionElement = calculateForm.querySelector(
+  '#fence-height option[value="1.7"]'
+);
+
+// ИНПУТЫ
+fenceOption.addEventListener("change", () => {
+  const selectedValue = fenceOption.value;
+
+  if (
+    selectedValue === "Профнастил" ||
+    selectedValue === "Евроштакетник" ||
+    selectedValue === "3D" ||
+    selectedValue === "Рабица"
+  ) {
+    fenceOptionHeight.classList.remove("input-hidden");
+    fenceInputLengthMetre.classList.remove("input-hidden");
+    fenceInputRoof.classList.add("input-hidden");
+    fenceInputLengthMetre.setAttribute("required", "");
+    fenceOptionHeight.setAttribute("required", "");
+    fenceInputRoof.removeAttribute("required", "");
+
+    gates.classList.add("input-hidden");
+    calculateFormBtn.style.display = "block";
+  }
+  if (selectedValue === "Навесы") {
+    fenceOptionHeight.classList.add("input-hidden");
+    fenceInputLengthMetre.classList.add("input-hidden");
+    fenceInputRoof.classList.remove("input-hidden");
+    fenceInputRoof.setAttribute("required", "");
+    fenceInputLengthMetre.removeAttribute("required", "");
+    fenceOptionHeight.removeAttribute("required", "");
+
+    gates.classList.add("input-hidden");
+    calculateFormBtn.style.display = "block";
+  }
+  if (selectedValue === "Ворота") {
+    fenceOptionHeight.classList.add("input-hidden");
+    fenceInputLengthMetre.classList.add("input-hidden");
+    fenceInputRoof.classList.add("input-hidden");
+    calculateFormPrice.classList.add("input-hidden");
+
+    gates.classList.remove("input-hidden");
+    calculateFormBtn.style.display = "none";
+  } else {
+    calculateFormPrice.classList.remove("input-hidden");
+  }
+
+  if ((optionElement && selectedValue === "3D") || selectedValue === "Рабица") {
+    optionElement.style.display = "none";
+    // optionElementValueType.textContent = "Высота забора";
+  } else {
+    optionElement.style.display = "block";
+  }
+
+  // Проверяем текущее значение fenceOptionHeight
+  if (
+    (fenceOptionHeight.value === "1.7" && selectedValue === "3D") ||
+    selectedValue === "Рабица"
+  ) {
+    // Если текущее значение равно "1.7" и выбрано "3D", сбрасываем его на значение "type"
+    fenceOptionHeight.value = "";
+  }
+
+  //
+});
+
+// fenceInputLengthMetre.addEventListener("input", ({ target: t }) => {
+//   t.value = Math.max(t.min, Math.min(t.max, t.value));
+// });
+
+// document.querySelector('input').addEventListener('input', ({ target: t }) => {
+//   t.value = Math.max(t.min, Math.min(t.max, t.value));
+// });
+
+fenceInputLengthMetre.addEventListener("input", function () {
+  if (this.value.length > 4) {
+    this.value = this.value.slice(0, 4); // Обрезаем значение до 4 символов
+  }
+});
+
+fenceInputRoof.addEventListener("input", function () {
+  if (this.value.length > 4) {
+    this.value = this.value.slice(0, 4); // Обрезаем значение до 4 символов
+  }
 });

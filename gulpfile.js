@@ -6,6 +6,7 @@ const browserSync = require("browser-sync").create();
 const autoprefixer = require("gulp-autoprefixer");
 const imagemin = require("gulp-imagemin");
 const uglify = require("gulp-uglify-es").default;
+const babel = require("gulp-babel");
 
 const del = require("del");
 
@@ -38,6 +39,7 @@ function scripts() {
     src(["node_modules/jquery/dist/jquery.js", "src/js/script.js"])
       .pipe(concat("script.min.js"))
       // .pipe(concat('script.js'))
+      .pipe(babel())
       .pipe(uglify())
       .pipe(dest("src/js"))
       .pipe(browserSync.stream())
